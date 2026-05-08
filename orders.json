@@ -1,0 +1,35 @@
+[
+  {
+    "order_id": "ORD-001",
+    "drink": "latte",
+    "size": "large",
+    "price": 5.50,
+    "timestamp": "2026-04-27 09:15",
+    "extras": ["oat milk", "extra shot"]
+  },
+  {
+    "order_id": "ORD-002",
+    "drink": "espresso",
+    "size": "small",
+    "price": 3.00,
+    "timestamp": "2026-04-27 09:22",
+    "extras": []
+  },
+  {
+    "order_id": "ORD-003",
+    "drink": "cappuccino",
+    "size": "medium",
+    "price": 4.50,
+    "timestamp": null,
+    "extras": ["vanilla syrup"]
+  },
+  {
+    "order_id": "ORD-004",
+    "drink": "americano",
+    "size": "large",
+    "price": 4.00,
+    "timestamp": "2026-04-27 10:05",
+    "extras": ["ice"]
+  }
+]
+ 

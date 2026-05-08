@@ -1,0 +1,5 @@
+order_id,drink,size,price,timestamp,extras_count
+ORD-001,latte,large,5.50,2026-04-27 09:15,2
+ORD-002,espresso,small,3.00,2026-04-27 09:22,0
+ORD-003,cappuccino,medium,4.50,N/A,1
+ORD-004,americano,large,4.00,2026-04-27 10:05,1
