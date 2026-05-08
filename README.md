@@ -13,7 +13,7 @@ This project processes coffee orders from JSON input and generates CSV reports a
 
 ## Project Structure
 
-'''text
+```text
 Coffee_Order/
 ├── CsvReport
 │   ├── reader.py
@@ -39,38 +39,38 @@ Coffee_Order/
 │   ├── test_validator.py
 │   └── test_writer.py
 └── test_summary
-
+```
 ---
 
 # How To Run The Project
 
 ## Generate CSV Report
 
-'''bash
+```bash
 python3 main.py --input order.json --output report.csv
-'''
+```
 
 ---
 
 ## Generate CSV + Analytics Summary
 
-'''bash
+```bash
 python3 main.py --input order.json --output report.csv --summary sumary.json
-'''
+```
 
 # How To Run Unit Tests
 
 Run all Tests:
 
-'''bash
+```bash
 python3 -m pytest -v
-'''
+```
 
 ---
 
 # Example input JSON
 
-'''json
+```json
 [
     {
         "order_id":"ORD-001",
@@ -81,22 +81,22 @@ python3 -m pytest -v
         "extras":["extra_shot","oat_milk"]
     }
 ]
-'''
+```
 
 ---
 
 # Example of CSV Output
 
-'''csv
+```csv
 order_id,drink,size,price,timestamp,extras_count
 ORD-001,latte,large,5.50,2026-05-07 09:15,2
-'''
+```
 
 ---
 
 # Example Analytics Output
 
-'''json
+```json
 {
     "total_orders":1,
     "total_revenue":5.5,
@@ -108,7 +108,7 @@ ORD-001,latte,large,5.50,2026-05-07 09:15,2
         "large":1
     }
 }
-'''
+```
 
 ---
 
