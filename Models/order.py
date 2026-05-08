@@ -8,7 +8,7 @@ class Order:
         self.extras = extras
     
     def extras_count(self):
-        return len(self.extras)
+        return len(self.extras) if self.extras else 0
     
     def timestamp_case(self):
         if self.timestamp:

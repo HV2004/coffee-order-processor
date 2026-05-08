@@ -1,0 +1,13 @@
+{
+    "total_orders": 2,
+    "total_revenue": 8.0,
+    "average_order_value": 4.0,
+    "order_by_drink": {
+        "latte": 1,
+        "espresso": 1
+    },
+    "order_by_size": {
+        "large": 1,
+        "small": 1
+    }
+}
