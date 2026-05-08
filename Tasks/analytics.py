@@ -1,8 +1,20 @@
 import json
+import logging
 from collections import Counter
 
+logger = logging.getLogger(__name__)
+
 class OrderAnalytics:
+    """
+    Generates analytics summary from orders.
+    """
+
     def generate_summary(self,orders,summary_file):
+        """
+        Generates summary stats and writes them in JSON.
+        """
+        logger.info("Generating summary")
+
         total_orders = len(orders)
         total_revenue = sum(order.price for order in orders)
         avg_order_value = (total_revenue/total_orders if total_orders>0 else 0)
@@ -17,3 +29,6 @@ class OrderAnalytics:
         }
         with open(summary_file,"w") as f:
             json.dump(summary,f,indent=4)
+
+        logger.info(f"Analytics summary written to: {summary_file}")
+        

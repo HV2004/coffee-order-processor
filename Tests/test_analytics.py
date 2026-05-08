@@ -1,6 +1,7 @@
 from Tasks.analytics import OrderAnalytics
 from Models.order import Order
 
+# Test analytics summary generation
 def test_analytics():
     analytics = OrderAnalytics()
     orders = [
