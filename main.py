@@ -6,6 +6,8 @@ from Tasks.service import Service
 from Tasks.processor import Processor
 from Tasks.validator import Valid
 from Tasks.analytics import OrderAnalytics
+from Data.data_exchange import DataStorage
+from API.exchange_rate_api import ExchangeRateApi
 
 #Configure logging
 logging.basicConfig(
@@ -24,15 +26,32 @@ def main():
     parser.add_argument("--input",required=True) # Input JSON file
     parser.add_argument("--output", required=True) # Output CSV file
     parser.add_argument("--summary",required=False) # Analytics summary file
+    parser.add_argument("--currency",required=False) # Currency conversion 
     args = parser.parse_args()
+    data_exchange = DataStorage()
 
     #Creating service layer
     OrderService = Service(
         reader=Reader(),
         writer=Writer(),
         validator=Valid(),
-        processor=Processor()
+        processor=Processor(),
+        data_exchange = data_exchange
     )
+
+
+    #Converts the currency
+    currency = args.currency if args.currency else "USD"
+    data_exchange.set_currency(currency)
+    rate = 1
+    if currency!="USD":
+        rate = ExchangeRateApi.get_exchange_rate(currency)
+        data_exchange.set_exchange_rate(rate)
+
+    if rate is None:
+        logger.error("ERROR Failed to fetch exchange rate")
+        print("Failed to fetch exchange rate")
+        exit(1)
 
     # Execute processing workflow
     valid_orders = OrderService.execute(args.input,args.output)
@@ -47,8 +66,8 @@ def main():
         analytics.generate_summary(valid_orders,args.summary)
 
         logger.info("Summary report generated successfully")
-        logger.info("Application finished")
-        
+        logger.info("Application finished") 
+    
 
 if __name__=="__main__":
     main()

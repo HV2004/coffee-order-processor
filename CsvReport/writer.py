@@ -15,7 +15,7 @@ class Writer:
 
         with open(file_path,"w",newline="") as f:
             writer = csv.writer(f)
-            writer.writerow(["order_id","drink","size","price","timestamp","extras_count"]) #CSV headers
+            writer.writerow(["order_id","drink","size","price","converted_total","currency","timestamp","extras_count"]) #CSV headers
             writer.writerows(rows) #Write processed rows
         
         logger.info(f"CSV rows written: {len(rows)}")

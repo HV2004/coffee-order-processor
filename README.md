@@ -2,26 +2,37 @@
 
 ## Overview
 
-This project processes coffee orders from JSON input and generates CSV reports and analytics summaries.
-
+This project processes coffee orders from JSON input, generates CSV reports, analytics summaries, and supports real-time currency conversion using ExchangeRate API .
 ## Features
 
 -JSON input processing 
 -CSV rerport generation
 -Order validation
 -Analytics generation
+-Convert USD prices into other currencies.
+-Secure API key handling 
+-LOgging support
+-Centralized data handling
 
 ## Project Structure
 
 ```text
 Coffee_Order/
+│
+├── API
+│   ├── exchange_rate_api.py
 ├── CsvReport
 │   ├── reader.py
 │   └── writer.py
+├── Data
+│   ├── data_exchange.py
 ├── main.py
 ├── Models
 │   ├── order.py
 ├── orders.json
+├── .env
+├── .gitignore
+├── requirements.txt
 ├── README.md
 ├── report.csv
 ├── summary.json
@@ -31,6 +42,8 @@ Coffee_Order/
 │   ├── service.py
 │   └── validator.py
 ├── Tests
+│   ├── test_data_exchange.py
+│   ├── test_exchange_api.py
 │   ├── test_analytics.py
 │   ├── test_order.py
 │   ├── test_processor.py
@@ -56,6 +69,29 @@ python3 main.py --input order.json --output report.csv
 
 ```csv
 python3 main.py --input order.json --output report.csv --summary sumary.json
+```
+
+## Get ExchangeRate API Key
+
+1. Visit: [ExchangeRate API](https://app.exchangerate-api.com/sign-up)
+2. Create free account.
+3. Copy API key.
+
+## Currency Conversion
+
+```bash
+pytho```json
+[
+    {
+        "order_id":"ORD-001",
+        "drink":"latte",
+        "size":"large",
+        "price":5.50,
+        "timestamp":"2026-05-07 09:15",
+        "extras":["extra_shot","oat_milk"]
+    }
+]
+```n3 main.py --input order.json --output report.csv --currency EUR
 ```
 
 # How To Run Unit Tests
@@ -109,6 +145,22 @@ ORD-001,latte,large,5.50,2026-05-07 09:15,2
     }
 }
 ```
+# Example Currency Conversion Output
+
+```json
+[
+    {
+        "order_id":"ORD-001",
+        "drink":"latte",
+        "size":"large",
+        "price":5.50,
+        "converted_total":5.06,
+        "currency":"EUR",
+        "timestamp":"2026-05-07 09:15",
+        "extras":["extra_shot","oat_milk"]
+    }
+]
+```
 
 ---
 
@@ -131,3 +183,15 @@ Orders are rejected if:
 - drink is invalid
 - size is invalid
 - price is less than or equal to 0
+```json
+[
+    {
+        "order_id":"ORD-001",
+        "drink":"latte",
+        "size":"large",
+        "price":5.50,
+        "timestamp":"2026-05-07 09:15",
+        "extras":["extra_shot","oat_milk"]
+    }
+]
+```
